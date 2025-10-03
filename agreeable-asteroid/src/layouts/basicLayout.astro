@@ -1,0 +1,37 @@
+---
+interface Props {
+  title: string;
+  id: "projects" | "about-me";
+}
+const { title, id } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} - Jochem Punt</title>
+  </head>
+
+  <body>
+    <header>
+      <div id="name">Jochem Punt</div>
+      <nav>
+        <a href="/" class={id === "projects" ? "active" : ""}>Projects</a>
+        <a href="/about-me" class={id === "about-me" ? "active" : ""}>
+          About me
+        </a>
+      </nav>
+    </header>
+
+    <main>
+      <h2>{title}</h2>
+      <slot />
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Jochem Punt. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
