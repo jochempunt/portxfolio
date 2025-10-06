@@ -1,9 +1,14 @@
 ---
+import Header from "../components/Header.astro";
+import Seo from "../components/Seo.astro";
+
 interface Props {
   title: string;
-  id: "projects" | "about-me";
+  id: string;
+  description: string;
 }
-const { title, id } = Astro.props;
+const { title, id, description } = Astro.props;
+import "../styles/globalStyle.css";
 ---
 
 <!doctype html>
@@ -11,22 +16,12 @@ const { title, id } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{title} - Jochem Punt</title>
+    <Seo title={title} description={description} />
   </head>
 
   <body>
-    <header>
-      <div id="name">Jochem Punt</div>
-      <nav>
-        <a href="/" class={id === "projects" ? "active" : ""}>Projects</a>
-        <a href="/about-me" class={id === "about-me" ? "active" : ""}>
-          About me
-        </a>
-      </nav>
-    </header>
-
+    <Header />
     <main>
-      <h2>{title}</h2>
       <slot />
     </main>
 
@@ -35,3 +30,21 @@ const { title, id } = Astro.props;
     </footer>
   </body>
 </html>
+
+<style is:global>
+  :root {
+    --accent-color: #ff835a;
+    --primary-color: hsl(0, 0%, 82%);
+    --secondary-color: #fae6df;
+    --text-color: #d1cfcf;
+    --background-color: #262726;
+  }
+
+  h2 {
+    padding-left: 0.5rem;
+  }
+
+  main {
+    max-width: 1500px;
+  }
+</style>

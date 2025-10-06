@@ -1,0 +1,34 @@
+---
+title: '3-Axis Gimbal Control Interface'
+description: 'Control software for a motorized camera gimbal used to capture images from precise angles for computer vision research. Built a MATLAB interface for designing smooth camera paths, using quaternions instead of Euler angles to prevent gimbal lock during complex rotations.'
+img: 'url'
+tags: ['Research', '3D', 'MATLAB']
+---
+
+# 3-Axis Gimbal Control Interface
+
+As a research assistant, I developed control software for a motorized pan-tilt-roll camera gimbal driven by the PINE Controller from Blackforest Motion. The software supports research in Structure-from-Motion (SfM) and 3D reconstruction by enabling precise camera movements.
+
+## My Contributions
+
+- **Designed a MATLAB GUI** to generate, preview, and export motion paths
+(// img in sidebar)
+- **Converted Euler angles to quaternions** for simpler user input and to prevent gimbal lock
+- **Integrated SLERP** (Spherical Linear Interpolation) for smooth orientation transitions
+- **Generated motion sequences** using the SLERP algorithm and converted them to a controller-readable format
+
+
+
+## Demo
+<iframe width="250"  src="https://www.youtube.com/embed/QBfR5ioWz-o?modestbranding=1&controls=16rel=0" 
+    title="YouTube video player" 
+    frameborder="0" 
+    allow="accelerometer; encrypted-media; gyroscope; picture-in-picture;" 
+    allowfullscreen
+    style="aspect-ratio: 9/16; border-radius: 3px;"
+     ></iframe>
+
+## Used Technologies
+
+**Software:** MATLAB (GUI, calculations, export)  
+**Hardware:** PINE Motion Controller by Blackforest Motion  

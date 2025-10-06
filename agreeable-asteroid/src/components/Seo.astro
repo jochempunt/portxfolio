@@ -1,0 +1,58 @@
+---
+import { Schema } from "astro-seo-schema";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  type?: "website" | "article";
+  noindex?: boolean;
+}
+
+const {
+  title = "Your Name - Web Developer & Designer",
+  description = "Portfolio showcasing web development projects, design work, and creative experiments.",
+  type = "website",
+  noindex = false,
+} = Astro.props;
+
+// Get the current URL
+const siteURL = Astro.site || new URL(Astro.url.href);
+const canonicalURL = new URL(Astro.url.pathname, siteURL);
+---
+
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalURL} />
+{noindex && <meta name="robots" content="noindex, nofollow" />}
+
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={canonicalURL} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+
+<Schema
+  item={{
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Jochem Punt",
+    jobTitle: "Software Engineer",
+    knowsAbout: [
+      "UX",
+      "Software Developement",
+      "UI",
+      "Frontend Developement",
+      "Game Developement",
+    ],
+    sameAs: [
+      "https://github.com/jochempunt",
+      "https://www.linkedin.com/in/jochem-punt-5446b220a/",
+    ],
+  }}
+/>
