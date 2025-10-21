@@ -1,0 +1,196 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  src?: ImageMetadata;
+  alt?: string;
+  url?: string;
+  width?: string;
+  loading?: 'lazy' | 'eager';
+}
+
+const { 
+  src, 
+  alt = "Preview",
+  url,
+  width = "350px",
+  loading = "lazy"
+} = Astro.props;
+
+// Determine if we're showing an iframe or image
+const isIframe = !!url;
+---
+
+<div class="phone-frame" style={`max-width: ${width};`}>
+  <div class="phone-body">
+    <!-- Notch/Dynamic Island -->
+    <div class="notch"></div>
+    
+    <!-- Screen -->
+    <div class="phone-screen">
+      {isIframe ? (
+        <>
+          {src && (
+            <Image
+              src={src}
+              alt={alt}
+              class="phone-image placeholder-image"
+              loading="eager"
+            />
+          )}
+          <iframe
+            src={url}
+            title={alt}
+            class="phone-iframe"
+            loading={loading}
+            sandbox="allow-scripts allow-same-origin"
+          ></iframe>
+        </>
+      ) : (
+        <Image
+          src={src!}
+          alt={alt}
+          class="phone-image"
+          loading={loading}
+        />
+      )}
+    </div>
+  </div>
+</div>
+
+<style>
+  .phone-frame {
+    margin: 2rem auto;
+    perspective: 1000px;
+  }
+
+  .phone-body {
+    background: #1a1a1a;
+    border-radius: 42px;
+    padding: 14px;
+    box-shadow: 
+      0 0 0 3px #2a2a2a,
+      0 20px 40px rgba(0, 0, 0, 0.5);
+    position: relative;
+  }
+
+  .notch {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 30px;
+    background: #2a2a2a;
+    border-radius: 0 0 20px 20px;
+    z-index: 10;
+  }
+
+  .notch::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 12px;
+    background: #0a0a0a;
+    border-radius: 50%;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5);
+  }
+
+  .phone-screen {
+    background: #000;
+    border-radius: 34px;
+    overflow: hidden;
+    position: relative;
+    aspect-ratio: 9/16;
+  }
+
+  .phone-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .phone-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .placeholder-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .phone-iframe[loading="lazy"] ~ .placeholder-image,
+  .phone-iframe:not([loading]) ~ .placeholder-image {
+    opacity: 1;
+    transition: opacity 0.3s;
+  }
+
+  /* Hide placeholder once iframe loads (browser-dependent) */
+  @supports (animation-timeline: scroll()) {
+    .phone-screen:has(iframe) .placeholder-image {
+      animation: fadeOut 0.3s 1s forwards;
+    }
+  }
+
+  @keyframes fadeOut {
+    to {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .phone-frame {
+      max-width: 280px !important;
+      margin: 1.5rem auto;
+    }
+
+    .phone-body {
+      padding: 10px;
+      border-radius: 36px;
+    }
+
+    .phone-screen {
+      border-radius: 28px;
+    }
+
+    .notch {
+      width: 100px;
+      height: 26px;
+    }
+
+    .notch::before {
+      width: 10px;
+      height: 10px;
+      top: 9px;
+    }
+  }
+</style>
+
+<script>
+  // Hide placeholder image once iframe loads
+  document.querySelectorAll<HTMLIFrameElement>('.phone-iframe').forEach(iframe => {
+    iframe.addEventListener('load', () => {
+      const placeholder = iframe.previousElementSibling as HTMLImageElement;
+      if (placeholder?.classList.contains('placeholder-image')) {
+        placeholder.style.opacity = '0';
+        setTimeout(() => {
+          placeholder.style.display = 'none';
+        }, 300);
+      }
+    });
+  });
+</script>

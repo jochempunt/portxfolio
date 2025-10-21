@@ -2,56 +2,54 @@
 import BasicLayout from "../layouts/basicLayout.astro";
 import ProjectPreview from "../components/ProjectPreview.astro";
 import { getCollection } from "astro:content";
-
 const description =
-  "Showcasing projects in web development, game design, UI/UX, and research.";
-
+"Showcasing projects in web development, game design, UI/UX, and research.";
 const projects = await getCollection("projects");
 ---
-
 <BasicLayout title="Projects" id="projects" description={description}>
-  <section id="info">
-    <h1>Projects</h1>
-    <span class="tagline"
-      >Interactive web applications, games, research projects and more</span
-    >
-  </section>
-  <section class="projects-list">
-    {
-      projects.map((proj) => (
-        <ProjectPreview
-          title={proj.data.title}
-          slug={proj.id}
-          description={proj.data.description}
-          img={proj.data.img}
-          tags={proj.data.tags}
-        />
-      ))
-    }
-  </section><section>P</section>
+<section id="info">
+<h1 style="view-transition-name: title;">Projects</h1>
+<span class="tagline"
+>Interactive web applications, games, research projects and more</span
+>
+</section>
+<section class="projects-list">
+{
+projects
+ .sort((a, b) => a.data.prio - b.data.prio)
+ .map((proj) => (
+<ProjectPreview
+title={proj.data.title}
+slug={proj.id}
+description={proj.data.description}
+img={proj.data.img}
+tags={proj.data.tags}
+github={proj.data.github}
+/>
+ ))
+}
+</section>
 </BasicLayout>
-
 <style>
-  :root {
-    --background-color: #262726;
-    --background-color-light: #474947;
-    --view-color: #ff835a;
-    --primary-color: hsl(0, 0%, 82%);
-  }
-  .projects-list {
-    max-width: 1300px;
-    margin: 0 auto;
-  }
-
-  #info h3 {
-    font-weight: 500;
-    color: rgb(241, 241, 241);
-    padding-left: 0.5rem;
-  }
-
-  @media (max-width: 768px) {
-    .projects-list {
-      padding: 1rem;
-    }
-  }
+:root {
+ --background-color: #262726;
+ --background-color-light: #474947;
+ --view-color: #ff835a;
+ --primary-color: hsl(0, 0%, 82%);
+ }
+.projects-list {
+max-width: 1300px;
+margin: 0 auto;
+padding-bottom: 3rem;
+ }
+#info h3 {
+font-weight: 500;
+color: rgb(241, 241, 241);
+padding-left: 0.5rem;
+ }
+@media (max-width: 768px) {
+.projects-list {
+padding: 1rem;
+ }
+ }
 </style>

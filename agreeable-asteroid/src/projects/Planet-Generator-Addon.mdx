@@ -1,16 +1,36 @@
 ---
-title: 'Blender Addon: Planet-Generator'
+title: 'Planet-Generator'
 description: 'A Python-based Blender plugin for generating and customizing planets and their materials. Offers granular control over material properties and rendering parameters for both terrestrial and gas planets.'
-img: 'url'
+img: ../assets/planet-generator/Planet_1.png
 tags: ['3D']
+github: 'https://github.com/jochempunt/PlanetenGenerator/'
+prio: 4
 ---
-# Combining AR with AI
 
-I built.....
-
-## What I've accomplished
-
-###
+import ImageGrid from "../layouts/ImageGrid.astro"
+import GithubLink from "../components/GithubLink.astro"
+import CenteredImage from "../components/CenteredImage.astro"
+import screenshot_blender from "../assets/planet-generator/screenshot_blender2.png"
 
 
- 
+
+
+# Planet-Generator
+This is a Blender plugin written in Python using bpy. It adds an operator that lets you generate customizable planets directly in the 3D Viewport. The tool was created for a university project and supports two main types of planets: Gas Giants and Terrestrial Planets.
+
+## Screenshot of Addon in usee
+<CenteredImage src={screenshot_blender} alt={"Screenshot of Gas planet being made with blender addon"} />
+
+
+## Example planets generated with the addon
+<ImageGrid>
+![Gas Planet with ring](../assets/planet-generator/Planet_1.png)
+![Gas Planet without ring](../assets/planet-generator/Planet_2.png)
+![Earth like planet](../assets/planet-generator/Planet_3.png)
+![Moon](../assets/planet-generator/Planet_4.png)
+</ImageGrid>
+
+
+
+<GithubLink href="https://github.com/jochempunt/PlanetenGenerator/" project="Planet Generator" />
+

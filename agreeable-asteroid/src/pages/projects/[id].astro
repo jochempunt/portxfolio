@@ -26,7 +26,9 @@ import BasicLayout from "../../layouts/basicLayout.astro";
     <span>/</span>
     <span id="currentPage">{project.data.title}</span>
   </nav>
-  <Content />
+  <section class="content">
+    <Content />
+  </section>
   <a id="back" href="/">◄ back to Projects</a>
 </BasicLayout>
 
@@ -34,12 +36,13 @@ import BasicLayout from "../../layouts/basicLayout.astro";
   #homePage:hover {
     color: var(--accent-color);
   }
-
+ .content{
+  max-width: 1300px;
+ }
   #back {
     display: block;
     color: var(--accent-color);
     padding-bottom: 10px;
     margin-bottom: 10px;
   }
-  
 </style>

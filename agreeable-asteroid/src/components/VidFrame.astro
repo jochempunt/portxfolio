@@ -1,0 +1,236 @@
+---
+interface Props {
+  id: string;
+  title?: string;
+  aspectRatio?: "16/9" | "9/16" | "4/3" | "1/1";
+  width?: string;
+}
+
+const { 
+  id, 
+  title = "Video player", 
+  aspectRatio = "16/9",
+  width = aspectRatio === "9/16" ? "350px" : "100%"
+} = Astro.props;
+
+const isVertical = aspectRatio === "9/16";
+---
+
+{isVertical ? (
+  <!-- Modern Phone Frame -->
+  <div class="phone-frame" style={`max-width: ${width};`}>
+    <div class="phone-body">
+      <!-- Notch/Dynamic Island -->
+      <div class="notch"></div>
+      
+      <!-- Screen -->
+      <div class="phone-screen">
+        <iframe
+          src={"https://www.youtube-nocookie.com/embed/"+id+"?rel=0&modestbranding=1&controls=0"}
+          title={title}
+          frameborder="0"
+          allow="accelerometer; encrypted-media; autoplay;"
+          allowfullscreen
+          style={`aspect-ratio: ${aspectRatio};`}
+        ></iframe>
+      </div>
+    </div>
+  </div>
+) : (
+  <!-- Window Frame for horizontal videos -->
+  <div class="video-frame-wrapper" style={`max-width: ${width};`}>
+    <div class="window-header">
+      <div class="window-controls">
+        <span class="control-dot red"></span>
+        <span class="control-dot yellow"></span>
+        <span class="control-dot green"></span>
+      </div>
+      <div class="window-title">{title}</div>
+    </div>
+    
+    <div class="video-container">
+      <iframe
+        src={"https://www.youtube-nocookie.com/embed/"+id+"?rel=0&modestbranding=1&controls=1"}
+        title={title}
+        frameborder="0"
+        allow="accelerometer; encrypted-media; gyroscope; picture-in-picture;"
+        allowfullscreen
+        style={`aspect-ratio: ${aspectRatio};`}
+      ></iframe>
+    </div>
+  </div>
+)}
+
+<style>
+  /* ===== PHONE FRAME STYLES ===== */
+  .phone-frame {
+    margin: 2rem auto;
+    perspective: 1000px;
+  }
+
+  .phone-body {
+    background: #1a1a1a;
+    border-radius: 42px;
+    padding: 14px;
+    box-shadow: 
+      0 0 0 3px #2a2a2a,
+      0 20px 40px rgba(0, 0, 0, 0.5);
+    position: relative;
+  }
+
+  .notch {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 30px;
+    background: #2a2a2a;
+    border-radius: 0 0 20px 20px;
+    z-index: 10;
+  }
+
+  .notch::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 12px;
+    background: #0a0a0a;
+    border-radius: 50%;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5);
+  }
+
+  .phone-screen {
+    background: #000;
+    border-radius: 34px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .phone-screen iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border: none;
+  }
+
+  /* ===== WINDOW FRAME STYLES ===== */
+  .video-frame-wrapper {
+    margin: 2rem auto;
+    background: #2b2b2b;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 
+      0 4px 6px rgba(0, 0, 0, 0.3),
+      0 10px 20px rgba(0, 0, 0, 0.2);
+    border: 1px solid #3a3a3a;
+  }
+
+  .window-header {
+    background: linear-gradient(180deg, #3a3a3a 0%, #2f2f2f 100%);
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    border-bottom: 1px solid #1f1f1f;
+  }
+
+  .window-controls {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .control-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: block;
+  }
+
+  .control-dot.red {
+    background: linear-gradient(135deg, #ff5f56 0%, #ff3b30 100%);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2) inset;
+  }
+
+  .control-dot.yellow {
+    background: linear-gradient(135deg, #ffa42e 0%, #ffaa00 100%);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2) inset;
+  }
+
+  .control-dot.green {
+    background: linear-gradient(135deg, #e0bb24 0%, #e0bb24 100%);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2) inset;
+  }
+
+  .window-title {
+    color: #999;
+    font-size: 0.85rem;
+    font-weight: 500;
+    flex: 1;
+    text-align: center;
+    user-select: none;
+  }
+
+  .video-container {
+    background: #000;
+    position: relative;
+    width: 100%;
+  }
+
+  .video-container iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border: none;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 640px) {
+    .phone-frame {
+      max-width: 280px !important;
+      margin: 1.5rem auto;
+    }
+
+    .phone-body {
+      padding: 10px;
+      border-radius: 36px;
+    }
+
+    .phone-screen {
+      border-radius: 28px;
+    }
+
+    .notch {
+      width: 100px;
+      height: 26px;
+    }
+
+    .notch::before {
+      width: 10px;
+      height: 10px;
+      top: 9px;
+    }
+
+    .video-frame-wrapper {
+      margin: 1rem auto;
+    }
+
+    .window-header {
+      padding: 0.5rem 0.75rem;
+    }
+
+    .control-dot {
+      width: 10px;
+      height: 10px;
+    }
+
+    .window-title {
+      font-size: 0.75rem;
+    }
+  }
+</style>

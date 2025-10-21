@@ -4,7 +4,7 @@ const isProjects = pathname === "/" || pathname.startsWith("/projects");
 const isAboutme = pathname.startsWith("/about-me");
 ---
 
-<header>
+<header >
   <a href="/" class="site-name" aria-label="Jochem Punt - Home"tabindex="-1">
     Jochem Punt
   </a>
@@ -12,7 +12,7 @@ const isAboutme = pathname.startsWith("/about-me");
     <a
       href="/"
       aria-current={isProjects ? "page" : undefined}
-      class={isProjects ? "active" : undefined}
+      id={isProjects ? "active" : undefined}
       
     >
       Projects
@@ -20,7 +20,7 @@ const isAboutme = pathname.startsWith("/about-me");
     <a
       href="/about-me"
       aria-current={isAboutme ? "page" : undefined}
-      class={isAboutme ? "active" : undefined}
+      id={isAboutme ? "active" : undefined}
     >
       About me
     </a>
@@ -35,18 +35,22 @@ const isAboutme = pathname.startsWith("/about-me");
     gap: 20px;
     align-items: center;
     flex-wrap: nowrap;
-    padding: 0.8;
+    padding: 0.8rem;
   }
 
-  .active {
-    color: var(--secondary-color);
-    background-color: var(--accent-color);
-    box-shadow: 0 1px 2px #1b1b1bd4;
-  }
+  
 
   nav > a {
     border-radius: 20px;
     padding: 0.3rem 0.6rem;
+     background-color: transparent;
+  }
+
+  #active{
+
+     color: var(--secondary-color);
+    background-color: var(--accent-color);
+ 
   }
 
   .site-name {
@@ -67,7 +71,6 @@ const isAboutme = pathname.startsWith("/about-me");
     display: flex;
     flex-direction: row;
     gap: 20px;
-    padding: 10px;
     background-color: rgba(47, 47, 47, 0.9);
     padding: 0.8rem;
     position: sticky;
@@ -95,8 +98,6 @@ const isAboutme = pathname.startsWith("/about-me");
     a {
       font-size: small;
     }
-    header {
-      gap: 20px;
-    }
+   
   }
 </style>

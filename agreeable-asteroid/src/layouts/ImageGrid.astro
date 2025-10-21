@@ -1,0 +1,37 @@
+---
+interface Props {
+  gap?: string;
+}
+
+const { gap = "1rem" } = Astro.props;
+---
+
+<div class="image-grid" style={`gap: ${gap};`}>
+  <slot />
+</div>
+
+<style>
+  .image-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+  }
+
+  .image-grid :global(p) {
+    margin: 0;
+    display: contents;
+  }
+
+  .image-grid :global(img) {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+  }
+
+  @media (max-width: 768px) {
+    .image-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

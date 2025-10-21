@@ -10,7 +10,7 @@ interface Props {
 }
 
 const {
-  title = "Your Name - Web Developer & Designer",
+  title = "Jochem Punt - Software engineer",
   description = "Portfolio showcasing web development projects, design work, and creative experiments.",
   type = "website",
   noindex = false,
@@ -21,8 +21,8 @@ const siteURL = Astro.site || new URL(Astro.url.href);
 const canonicalURL = new URL(Astro.url.pathname, siteURL);
 ---
 
-<title>{title}</title>
-<meta name="title" content={title} />
+<title>{title + "- Jochem Punt"}</title>
+<meta name="title" content={title + " - Jochem Punt"} />
 <meta name="description" content={description} />
 <link rel="canonical" href={canonicalURL} />
 {noindex && <meta name="robots" content="noindex, nofollow" />}
