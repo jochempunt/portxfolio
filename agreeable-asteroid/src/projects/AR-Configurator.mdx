@@ -6,19 +6,44 @@ tags: ['AI', 'AR']
 prio: 1
 ---
 import VidFrame from "../components/VidFrame.astro"
-
-
+import ablauf from "../assets/ablauf_bThesis_En.png"
+import CenteredImage from "../components/CenteredImage.astro"
 
 # AR Product-Configurator with AI assistant
 
-I built...
+I built a mobile AR product-configurator that lets users place and customize 3D products in real space using natural-language voice commands powered by an LLM. 
+The project was developed as a bachelor thesis exploring multimodal interaction design where AR and conversational AI work together to simplify complex configuration tasks.
 
-## What I've accomplished
 
-###
+## Key features:
 
-## Demo-Video
+- Place, preview and configure 3D models of Products in the real world (AR)
+- LLM-based assistant for parsing intent, clarifying ambiguous requests, and giving contextual feedback
+- Live update of the 3D model and UI based on the assistant’s interpretation
 
-<VidFrame id="QBosS6uVUto" aspectRatio="9/16" title="Demo AR Product Configurator"/>        
+<VidFrame id="QBosS6uVUto" aspectRatio="9/16"  title="Demo AR Product Configurator"/>        
 
-            
+   
+
+## What I've accomplished 
+
+- Designed and implemented a mobile AR app prototype with integrated voice assistant
+- Built the dialog pipeline: speech recognition → LLM intent parsing → action mapping → AR model updates
+- Evaluated usability with expert feedback and iterated on interaction flows
+- Identified key technical and UX challenges: LLM interpretability, performance, stability, and cross-device compatibility
+- Improved assistant behavior by migrating from GPT-3.5 to a more capable LLM (improved grounding and interpretation)
+
+
+<CenteredImage src={ablauf} alt="Interaction Steps of AR Product-configurator APP" />
+
+## Used Technologies
+- AR framework: Unity AR Foundation
+- Speech-to-text: Whisper
+- Large Language Model: GPT-4
+- Mobile frontend: Unity
+- Assistant runtime: LLM over WebSocket
+
+
+
+         
+

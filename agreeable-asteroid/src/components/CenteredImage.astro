@@ -6,13 +6,14 @@ interface Props {
   src: ImageMetadata;
   alt: string;
   class?: string;
+  size?:number
 }
 
-const { src, alt, class: className = '' } = Astro.props;
+const { src, alt, class: className = '', size = 600 } = Astro.props;
 ---
 
 <div class={`img-container ${className}`}>
-  <Image src={src} alt={alt} title={alt} loading="eager" />
+  <Image src={src} alt={alt} title={alt} width={size} loading="eager" />
 </div>
 
 <style>

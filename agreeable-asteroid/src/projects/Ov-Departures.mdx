@@ -8,27 +8,42 @@ github: 'https://github.com/jochempunt/ovApp/'
 ---
 
 import ImageGrid from "../layouts/ImageGrid.astro"
-import GithubLink from "../components/GithubLink.astro"
+import Linkbutton from "../components/ButtonLink.astro"
 import PhoneImageFrame from "../components/PhoneImageFrame.astro"
 import PhoneImg from "../assets/ov-webapp/phone_screen.png"
 
 
   
 # Departures
-[View live Website](https://ov-app-ten.vercel.app/)
+
+<Linkbutton  special={true} project="Departures" label="View Website" href="https://ov-app-ten.vercel.app/" />  
+<Linkbutton project="Departures" label="View Code on Github" href="https://github.com/jochempunt/ovApp/" />  
 
 
-## Examples
+A mobile-first web app that shows real-time departures for Dutch public transport. Users can search stops, see live departure data from the OV-API, 
+and switch between multiple custom themes for better visibility and personalization. 
+The app focuses on fast updates, clear UI for quick glanceability, and lightweight performance on mobile devices.
+
+## Key features
+
+- Live departure data from the OV-API (metros, buses, trams)
+- Searchable stops (fuzzy)
+- Mobile-first responsive design with multiple custom themes
+- Client-side caching and background refresh using TanStack Query
+
+## Examples (with themes)
 <ImageGrid>
-![](../assets/ov-webapp/theme_1.png)
-![](../assets/ov-webapp/theme_2.png)
 ![](../assets/ov-webapp/theme_3.png)
+![](../assets/ov-webapp/theme_2.png)
+![](../assets/ov-webapp/theme_1.png)
 ![](../assets/ov-webapp/theme4.png)
 </ImageGrid>
 
-## Interactive Mobile demo
-<PhoneImageFrame src={PhoneImg} loading="eager" url="https://ov-app-ten.vercel.app/" alt="responsive (mobile) view of 'departures'" width="400px"/>
+## Tech Stack
+- React (Vite)
+- TanStack Query for data fetching and caching
+- OV-API (public transport data)
+- MUI component library
+- Deployed on Vercel
 
 
-
-<GithubLink project="Departures" href="https://github.com/jochempunt/ovApp/" />  

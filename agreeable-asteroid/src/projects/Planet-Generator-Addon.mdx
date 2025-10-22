@@ -8,7 +8,7 @@ prio: 4
 ---
 
 import ImageGrid from "../layouts/ImageGrid.astro"
-import GithubLink from "../components/GithubLink.astro"
+import Link from "../components/ButtonLink.astro"
 import CenteredImage from "../components/CenteredImage.astro"
 import screenshot_blender from "../assets/planet-generator/screenshot_blender2.png"
 
@@ -16,13 +16,21 @@ import screenshot_blender from "../assets/planet-generator/screenshot_blender2.p
 
 
 # Planet-Generator
+<Link href="https://github.com/jochempunt/PlanetenGenerator/" label="view project on Github" />
 This is a Blender plugin written in Python using bpy. It adds an operator that lets you generate customizable planets directly in the 3D Viewport. The tool was created for a university project and supports two main types of planets: Gas Giants and Terrestrial Planets.
 
-## Screenshot of Addon in usee
+
+
+
+
+
+## Screenshot of Addon in use
 <CenteredImage src={screenshot_blender} alt={"Screenshot of Gas planet being made with blender addon"} />
 
 
 ## Example planets generated with the addon
+
+<br/>
 <ImageGrid>
 ![Gas Planet with ring](../assets/planet-generator/Planet_1.png)
 ![Gas Planet without ring](../assets/planet-generator/Planet_2.png)
@@ -31,6 +39,4 @@ This is a Blender plugin written in Python using bpy. It adds an operator that l
 </ImageGrid>
 
 
-
-<GithubLink href="https://github.com/jochempunt/PlanetenGenerator/" project="Planet Generator" />
 
