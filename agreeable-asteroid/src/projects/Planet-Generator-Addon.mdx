@@ -17,12 +17,13 @@ import screenshot_blender from "../assets/planet-generator/screenshot_blender2.p
 
 # Planet-Generator
 <Link href="https://github.com/jochempunt/PlanetenGenerator/" label="view project on Github" />
-This is a Blender plugin written in Python using bpy. It adds an operator that lets you generate customizable planets directly in the 3D Viewport. The tool was created for a university project and supports two main types of planets: Gas Giants and Terrestrial Planets.
 
+A Blender addon (Python, bpy) that procedurally generates customizable planets directly in the 3D viewport. Created for a university project, it supports Gas Giants and Terrestrial planets with fine-grained control over geometry, materials, atmosphere, rings, and render settings.
 
-
-
-
+## Features
+- Procedural planet generation (Gas Giant & Terrestrial)
+- Customizable parameters: subdivision, continent division, noise/detail, color gradients, terrain bumpiness, ocean/wave settings, clouds, atmosphere opacity, ring size/thickness
+- Full material node-tree generation (no external textures required)
 
 ## Screenshot of Addon in use
 <CenteredImage src={screenshot_blender} alt={"Screenshot of Gas planet being made with blender addon"} />
@@ -37,6 +38,11 @@ This is a Blender plugin written in Python using bpy. It adds an operator that l
 ![Earth like planet](../assets/planet-generator/Planet_3.png)
 ![Moon](../assets/planet-generator/Planet_4.png)
 </ImageGrid>
+
+
+## Used Technologies
+- Blender
+- Blender Python API
 
 
 

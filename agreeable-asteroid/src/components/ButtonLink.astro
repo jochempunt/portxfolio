@@ -2,10 +2,10 @@
 interface Props {
   href: string;
   label: string;
-  special?: boolean;
+  special?: "Orange"|"Blue"| "";
 }
 
-const { href, label, special = false } = Astro.props;
+const { href, label, special = "" } = Astro.props;
 ---
 
 <a
@@ -13,7 +13,7 @@ const { href, label, special = false } = Astro.props;
   target="_blank"
   rel="noopener noreferrer"
   title={label}
-  class={`github-link ${special ? "orange": ""}`}
+  class={`github-link ${special}`}
 >
   <span>{label}</span>
   <svg
@@ -42,7 +42,7 @@ const { href, label, special = false } = Astro.props;
     background: #2b2b2b;
     border: 1px solid #3a3a3a;
     border-radius: 8px;
-    color: #e8e8e8;
+    color: #ffffff;
     text-decoration: none;
     font-size: 0.95rem;
     font-weight: 500;
@@ -71,12 +71,21 @@ const { href, label, special = false } = Astro.props;
   }
 
 
-  .orange{
-    background-color: #ff835a;
+  .Orange{
+    background-color: #ff835ad5;
   }
 
-   .orange:hover{
-    background-color: #f09475;
+   .Orange:hover{
+    background-color: #f09475ce;
+  }
+
+
+    .Blue{
+    background-color: #5aaaffd2;
+  }
+
+    .Blue:hover{
+    background-color: #6fb1f7cf;
   }
 
 

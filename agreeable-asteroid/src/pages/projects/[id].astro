@@ -39,6 +39,11 @@ import BasicLayout from "../../layouts/basicLayout.astro";
  .content{
   max-width: 1300px;
  }
+
+.breadcrumbs > a{
+  text-decoration: underline;
+}
+
   #back {
     display: block;
     color: var(--accent-color);
@@ -46,6 +51,9 @@ import BasicLayout from "../../layouts/basicLayout.astro";
     margin-bottom: 10px;
   }
 
+  h2{
+    margin-bottom: 0;
+  }
 
   @media (max-width:768px) {
     .content{
