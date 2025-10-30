@@ -4,7 +4,7 @@ My personal portfolio website showcasing my projects and skills.
 
 Built with **Astro**, **TypeScript**, **HTML/CSS**, and **MDX**.
 
-[View Live Site](https://portfolio-jochem-punt.vercel.app/)
+[jochempunt.com](https://jochempunt.com/)
 
 ## Tech Stack
 
