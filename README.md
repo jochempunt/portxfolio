@@ -1,3 +1,9 @@
+
+Lighthouse Scores:
+
+![Lighthouse](./assets/lighthouse-scores.svg)
+
+
 # Portfolio
 
 My personal portfolio website showcasing my projects and skills.
