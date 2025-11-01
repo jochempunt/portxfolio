@@ -8,13 +8,12 @@ Lighthouse Scores:
 
 My personal portfolio website showcasing my projects and skills.
 
-Built with **Astro**, **TypeScript**, **HTML/CSS**, and **MDX**.
-
+Visit live site:
 [jochempunt.com](https://jochempunt.com/)
 
 ## Tech Stack
+Built with Astro, HTML/CSS, and MDX.
 
 - Astro - Static site generation
-- TypeScript - Type-safe development
-- MDX - Content with components
-- CSS - Styling
+- MDX - Write projects as markdown files with frontmatter metadata. The site automatically generates preview cards for the portfolio grid and individual project detail pages from these files.
+- CSS - Responsive and accessible design
