@@ -1,37 +1,63 @@
 ---
+import GithubIcon from "../assets/githubicon.svg?raw";
+import MailIcon from "../assets/mailicon.svg?raw";
+import LinkedinIcon from "../assets/linkedin.svg?raw";
+import ExternalLinkIcon from "../assets/external-link.svg?raw";
+
 interface Props {
-  href: string;
+  href?: string;
   label: string;
-  special?: "Orange"|"Blue"| "";
+  special?: "Orange" | "Blue" | "Green" | "";
+  email?: string;
+  icon?: "github" | "linkedin" | "external";
 }
 
-const { href, label, special = "" } = Astro.props;
+const { href, label, special = "", email, icon } = Astro.props;
+
+const isEmail = !!email;
+const linkHref = isEmail ? "#" : href;
+const target = isEmail ? undefined : "_blank";
+const rel = isEmail ? undefined : "noopener noreferrer";
+
+const icons = {
+  github: GithubIcon,
+  linkedin: LinkedinIcon,
+  external: ExternalLinkIcon,
+  mail: MailIcon,
+};
+
+// Determine which icon to use. 'mail' is automatic, others are explicit.
+const iconName = isEmail ? "mail" : icon;
+const iconSvg = iconName ? icons[iconName] : null;
 ---
 
 <a
-  href={href}
-  target="_blank"
-  rel="noopener noreferrer"
+  href={linkHref}
+  target={target}
+  rel={rel}
   title={label}
   class={`github-link ${special}`}
+  data-email={email}
 >
   <span>{label}</span>
-  <svg
-    class="arrow-icon"
-    viewBox="0 0 16 16"
-    fill="currentColor"
-    aria-hidden="true"
-  >
-    <path
-      fill-rule="evenodd"
-      d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"
-    ></path>
-    <path
-      fill-rule="evenodd"
-      d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"
-    ></path>
-  </svg>
+  {iconSvg && <Fragment set:html={iconSvg} />}
 </a>
+
+<script>
+  // Simple email obfuscation
+  document.querySelectorAll("a[data-email]").forEach((link) => {
+    const setMailto = () => {
+      const email = (link as HTMLElement).dataset.email;
+      if (email && link.getAttribute("href") === "#") {
+        link.setAttribute("href", `mailto:${email}`);
+      }
+    };
+
+    // Set the href on first interaction (hover or focus) to avoid scrapers
+    link.addEventListener("pointerenter", setMailto, { once: true });
+    link.addEventListener("focus", setMailto, { once: true });
+  });
+</script>
 
 <style>
   .github-link {
@@ -57,19 +83,13 @@ const { href, label, special = "" } = Astro.props;
     border-color: #4a4a4a;
   }
 
-  .github-icon {
-    width: 20px;
-    height: 20px;
+  .github-link > :global(svg) {
+    width: 16px;
+    height: 16px;
     flex-shrink: 0;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
   }
-
-  .arrow-icon {
-    width: 14px;
-    height: 14px;
-    flex-shrink: 0;
-    opacity: 0.6;
-  }
-
 
   .Orange{
     background-color: #ff835ad5;
@@ -79,17 +99,23 @@ const { href, label, special = "" } = Astro.props;
     background-color: #f09475ce;
   }
 
-
-    .Blue{
+  .Blue{
     background-color: #5aaaffd2;
   }
 
-    .Blue:hover{
+  .Blue:hover{
     background-color: #6fb1f7cf;
   }
 
+  .Green {
+    background-color: #5ac8a0d5;
+  }
 
-  .github-link:hover .arrow-icon {
+  .Green:hover {
+    background-color: #6cd8b0d5;
+  }
+
+  .github-link:hover > :global(svg) {
     opacity: 1;
   }
 </style>
