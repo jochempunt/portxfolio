@@ -67,12 +67,6 @@ const description =
     max-width: 800px;
   }
 
-  .status p {
-    font-size: 1.1rem;
-    color: var(--accent-color);
-    max-width: 800px;
-  }
-
   .skills p {
     max-width: 800px;
     line-height: 1.8;
@@ -80,7 +74,7 @@ const description =
 
   h2 {
     font-weight: 500;
-    color: rgb(241, 241, 241);
+    color: var(--text-color-light);
     margin-bottom: 1rem;
   }
 
@@ -99,7 +93,7 @@ const description =
 
   strong,
   b {
-    color: rgb(241, 241, 241);
+    color: var(--text-color-light);
     font-weight: 600;
   }
 
@@ -110,18 +104,9 @@ const description =
   .status-card {
     position: relative;
     max-width: 800px;
-    padding: 1.5rem 1.5rem 1.5rem 3rem;
-    background: rgba(255, 107, 53, 0.07);
-    border: 2px solid var(--accent-color);
-    border-radius: 12px;
-  }
-
-  .status-card {
-    position: relative;
-    max-width: 800px;
     padding: 1rem 1rem 1rem 2.5rem;
-    background: rgba(255, 107, 53, 0.1);
-    border: 2px solid rgba(255, 107, 53, 0.4); 
+    background: rgba(var(--accent-color-rgb), 0.1);
+    border: 2px solid rgba(var(--accent-color-rgb), 0.4);
     border-radius: 8px;
   }
 
@@ -138,8 +123,8 @@ const description =
   }
 
   .status-card p {
-    font-size: 1rem; /* Reduced from 1.1rem */
-    color: rgb(241, 241, 241);
+    font-size: 1rem; 
+    color: var(--text-color-light);
     margin: 0;
   }
 

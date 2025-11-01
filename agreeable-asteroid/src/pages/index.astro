@@ -32,21 +32,15 @@ const projects = await getCollection("projects");
   </section>
 </BasicLayout>
 <style>
-  :root {
-    --background-color: #262726;
-    --background-color-light: #474947;
-    --view-color: #ff835a;
-    --primary-color: hsl(0, 0%, 82%);
-  }
   .projects-list {
     max-width: 1300px;
     margin: 0 auto;
     padding-bottom: 3rem;
   }
-  #info h3 {
+  .tagline {
     font-weight: 500;
-    color: rgb(241, 241, 241);
-    padding-left: 0.5rem;
+    color: var(--text-color-light);
+    font-size: 1.1rem;
   }
   @media (max-width: 768px) {
     .projects-list {

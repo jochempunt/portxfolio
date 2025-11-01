@@ -2,6 +2,7 @@
 import Header from "../components/Header.astro";
 import Seo from "../components/Seo.astro";
 import Analytics from '@vercel/analytics/astro'
+import GithubIcon from "../assets/githubicon.svg?raw";
 
 interface Props {
   title: string;
@@ -30,25 +31,48 @@ import "../styles/globalStyle.css";
     </main>
 
     <footer>
-      <p>&copy; 2025 Jochem Punt. All rights reserved.</p>
+      <div class="footer-content">
+        <p>&copy; 2025 Jochem Punt. All rights reserved.</p>
+        <a
+          href="https://github.com/jochempunt/portxfolio"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="footer-source-link"
+        >
+          <Fragment set:html={GithubIcon} />
+          <span>View source on GitHub</span>
+        </a>
+      </div>
     </footer>
   </body>
 </html>
-
-<style is:global>
-  :root {
-    --accent-color: #ff835a;
-    --primary-color: hsl(0, 0%, 82%);
-    --secondary-color: #fae6df;
-    --text-color: #d1cfcf;
-    --background-color: #262726;
+<style>
+  .footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
   }
-
-  h2 {
-    padding-left: 0.5rem;
+  .footer-content p {
+    margin: 0;
   }
-
-  main {
-    max-width: 1500px;
+  .footer-source-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-color);
+    opacity: 0.6;
+    transition: opacity 0.2s ease-in-out;
+  }
+  .footer-source-link:hover {
+    opacity: 1;
+    text-decoration: none;
+  }
+  .footer-source-link :global(svg) {
+    width: 20px;
+    height: 20px;
+  }
+  .footer-source-link span {
+    text-decoration: underline;
   }
 </style>
