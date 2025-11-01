@@ -2,7 +2,7 @@
 import Header from "../components/Header.astro";
 import Seo from "../components/Seo.astro";
 import Analytics from '@vercel/analytics/astro'
-import GithubIcon from "../assets/githubicon.svg?raw";
+import GithubIcon from "../assets/githubicon.svg";
 
 interface Props {
   title: string;
@@ -39,7 +39,7 @@ import "../styles/globalStyle.css";
           rel="noopener noreferrer"
           class="footer-source-link"
         >
-          <Fragment set:html={GithubIcon} />
+          <GithubIcon />
           <span>View source on GitHub</span>
         </a>
       </div>
@@ -68,7 +68,7 @@ import "../styles/globalStyle.css";
     opacity: 1;
     text-decoration: none;
   }
-  .footer-source-link :global(svg) {
+  .footer-source-link svg {
     width: 20px;
     height: 20px;
   }
