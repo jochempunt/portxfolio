@@ -1,6 +1,7 @@
 ---
 import { Schema } from "astro-seo-schema";
 
+const SITE_TITLE = "Jochem Punt";
 interface Props {
   title?: string;
   description?: string;
@@ -10,32 +11,43 @@ interface Props {
 }
 
 const {
-  title = "Jochem Punt - Software engineer",
+  title,
   description = "Portfolio showcasing web development projects, design work, and creative experiments.",
+  image,
   type = "website",
   noindex = false,
 } = Astro.props;
 
-// Get the current URL
+
 const siteURL = Astro.site || new URL(Astro.url.href);
 const canonicalURL = new URL(Astro.url.pathname, siteURL);
+
+const pageTitle = title ? `${title} - ${SITE_TITLE}` : SITE_TITLE;
+
+
+const socialImage = image
+  ? new URL(image, siteURL)
+  : new URL("/social-preview.png", siteURL);
 ---
 
-<title>{title + " - Jochem Punt"}</title>
-<meta name="title" content={title + " - Jochem Punt"} />
+<title>{pageTitle}</title>
+<meta name="title" content={pageTitle} />
 <meta name="description" content={description} />
 <link rel="canonical" href={canonicalURL} />
 {noindex && <meta name="robots" content="noindex, nofollow" />}
 
 <meta property="og:type" content={type} />
 <meta property="og:url" content={canonicalURL} />
-<meta property="og:title" content={title} />
+<meta property="og:title" content={pageTitle} />
 <meta property="og:description" content={description} />
+<meta property="og:site_name" content={SITE_TITLE} />
+<meta property="og:image" content={socialImage} />
 
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={canonicalURL} />
-<meta property="twitter:title" content={title} />
+<meta property="twitter:title" content={pageTitle} />
 <meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={socialImage} />
 
 <Schema
   item={{
@@ -45,10 +57,10 @@ const canonicalURL = new URL(Astro.url.pathname, siteURL);
     jobTitle: "Software Engineer",
     knowsAbout: [
       "UX",
-      "Software Developement",
+      "Software Development",
       "UI",
-      "Frontend Developement",
-      "Game Developement",
+      "Frontend Development",
+      "Game Development",
     ],
     sameAs: [
       "https://github.com/jochempunt",
