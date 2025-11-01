@@ -1,4 +1,4 @@
-<svg class="theme--light" style="background:none" xmlns="http://www.w3.org/2000/svg" fill="none" width="800" height="200">
+<svg class="theme--dark" style="background:#00000" xmlns="http://www.w3.org/2000/svg" fill="none" width="800" height="200">
     <style>
         .gauge-base { opacity: 0.1; }
         .gauge-arc {
