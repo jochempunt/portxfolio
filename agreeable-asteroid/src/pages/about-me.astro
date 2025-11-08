@@ -3,26 +3,49 @@ import BasicLayout from "../layouts/basicLayout.astro";
 import ButtonLink from "../components/ButtonLink.astro";
 
 const description =
-  "Software Engineer passionate about interactive experiences. Learn more about my background, skills, and approach";
+  "About Jochem Punt: frontend-focused software engineer building fast, accessible, interactive interfaces.";
 ---
 
-<BasicLayout title="About Me" id="about-me" description={description}>
+<BasicLayout title="About Jochem Punt" id="about-me" description={description}>
   <section class="intro">
     <h1>About me</h1>
     <p class="lead">
-      I'm <em>Jochem Punt</em>, a frontend developer specializing in building
-      fast, accessible, and interactive applications.
+      I’m <strong>Jochem Punt</strong>, a frontend-focused software engineer who
+      cares about performance, accessibility, and clean UI. I like to build
+      fast, interactive applications and enjoy turning ideas into usable
+      interfaces.
     </p>
   </section>
 
-  <section class="skills">
-    <p>
-      I have hands-on experience with <strong>React</strong>, along with a solid
-      foundation in <strong>HTML</strong>, <strong>CSS</strong>, and
-      <strong>JavaScript/TypeScript</strong>. I enjoy building interactive
-      applications and have knowledge in <strong>C#</strong>, particularly
-      within the <strong>.NET framework</strong> and <strong>Unity</strong>.
+  <section class="about-highlights">
+    <p class="kicker">What I’m good at</p>
+    <h2 class="headline">Learning fast, building thoughtfully.</h2>
+
+    <p class="body">
+      I enjoy digging below the surface and connecting systems. I’ve worked with
+      <strong>C#</strong> (.NET / Unity), <strong>TypeScript</strong> (React, Astro),
+      and <strong>Python</strong>, across web interfaces, 3D, and
+      research-driven prototypes.
     </p>
+
+    <div class="grid">
+      <div>
+        <h3>Strengths</h3>
+        <ul>
+          <li>Rapid learning & problem framing</li>
+          <li>Accessible, performance-minded UX</li>
+          <li>Clean, readable code</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Used lately</h3>
+        <ul>
+          <li>TypeScript · React · Astro</li>
+          <li>C# · .NET · Unity</li>
+          <li>Python (tooling / scripts)</li>
+        </ul>
+      </div>
+    </div>
   </section>
 
   <section class="status">
@@ -60,6 +83,45 @@ const description =
 </BasicLayout>
 
 <style>
+  p {
+    text-align: justify;
+    text-justify: distribute;
+  }
+
+  .kicker {
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    opacity: 0.7;
+    margin: 0 0 0.25rem;
+  }
+  .headline {
+    font-size: 1.4rem;
+    margin: 0.1rem 0 0.6rem;
+    color: var(--text-color-light);
+  }
+  .body {
+    line-height: 1.8;
+    margin: 0 0 1rem;
+  }
+  .grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+  .grid h3 {
+    margin: 0.25rem 0 0.4rem;
+    font-size: 1rem;
+    color: var(--text-color-light);
+  }
+  .grid ul {
+    margin: 0;
+    padding-left: 1.1rem;
+  }
+  .grid li {
+    margin: 0.25rem 0;
+  }
+
   section {
     margin-bottom: 1rem;
   }
@@ -69,9 +131,7 @@ const description =
   }
 
   .lead {
-    font-size: 1.25rem;
     line-height: 1.6;
-    max-width: 800px;
   }
 
   .skills p {
@@ -122,7 +182,7 @@ const description =
     left: 1rem;
     top: 50%;
     transform: translateY(-50%);
-    width: 10px; 
+    width: 10px;
     height: 10px;
     background: var(--accent-color);
     border-radius: 50%;
@@ -130,11 +190,14 @@ const description =
   }
 
   .status-card p {
-    font-size: 1rem; 
+    font-size: 1rem;
     color: var(--text-color-light);
     margin: 0;
   }
 
+  main {
+    padding: 0 0;
+  }
   @keyframes pulse {
     0%,
     100% {
@@ -149,10 +212,8 @@ const description =
     color: var(--accent-color);
   }
 
-
-
   @media (max-width: 768px) {
-    section{
+    section {
       margin: 0 1rem;
     }
   }

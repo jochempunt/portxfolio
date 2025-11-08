@@ -3,16 +3,26 @@ import BasicLayout from "../layouts/basicLayout.astro";
 import ProjectPreview from "../components/ProjectPreview.astro";
 import { getCollection } from "astro:content";
 const description =
-  "Showcasing projects in web development, game design, UI/UX, and research.";
+  "Explore projects inlcuding interactive web applications, game prototypes, and research projects by Jochem Punt - a software engineer focusing on UX, frontend, 3D and more";
 const projects = await getCollection("projects");
 ---
 
-<BasicLayout title="Projects" id="projects" description={description}>
+<BasicLayout
+  title="Projects by Jochem Punt - Web, Game & UX Development"
+  id="projects"
+  description={description}
+>
   <section id="info">
     <h1>Projects</h1>
-    <span class="tagline"
-      >Interactive web applications, games, research projects and more</span
-    >
+    <p class="tagline">
+      <p>
+        Discover projects by <strong>Jochem Puntt</strong> spanning from modernn
+        web development, frontend development, experiments with AI and games. <a
+          id="more"
+          href="/about-me" title="About me Page">Learn more more about me</a
+        >
+      </p>
+    </p>
   </section>
   <section class="projects-list">
     {
@@ -33,14 +43,26 @@ const projects = await getCollection("projects");
 </BasicLayout>
 <style>
   .projects-list {
-    max-width: 1300px;
+    max-width: 900px;
     margin: 0 auto;
     padding-bottom: 3rem;
   }
+  main {
+    max-width: 900;
+  }
+
+  #info {
+    margin-bottom: 1rem;
+  }
+
   .tagline {
     font-weight: 500;
     color: var(--text-color-light);
     font-size: 1.1rem;
+  }
+  #more {
+    color: var(--accent-color);
+    text-decoration: underline;
   }
   @media (max-width: 768px) {
     .projects-list {

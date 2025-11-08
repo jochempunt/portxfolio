@@ -1,8 +1,8 @@
 ---
-import GithubIcon from "../assets/githubicon.svg?raw";
-import MailIcon from "../assets/mailicon.svg?raw";
-import LinkedinIcon from "../assets/linkedin.svg?raw";
 import ExternalLinkIcon from "../assets/external-link.svg?raw";
+import GithubIcon from "../assets/githubicon.svg?raw";
+import LinkedinIcon from "../assets/linkedin.svg?raw";
+import MailIcon from "../assets/mailicon.svg?raw";
 
 interface Props {
   href?: string;
@@ -26,7 +26,7 @@ const icons = {
   mail: MailIcon,
 };
 
-// Determine which icon to use. 'mail' is automatic, others are explicit.
+
 const iconName = isEmail ? "mail" : icon;
 const iconSvg = iconName ? icons[iconName] : null;
 ---
@@ -108,11 +108,11 @@ const iconSvg = iconName ? icons[iconName] : null;
   }
 
   .Green {
-    background-color: #5ac8a0d5;
+    background-color: #f5563dd5;
   }
 
   .Green:hover {
-    background-color: #6cd8b0d5;
+    background-color: #f5563da9;
   }
 
   .github-link:hover > :global(svg) {

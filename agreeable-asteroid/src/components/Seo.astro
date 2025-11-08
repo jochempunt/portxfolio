@@ -7,7 +7,6 @@ interface Props {
   description?: string;
   image?: string;
   type?: "website" | "article";
-  noindex?: boolean;
 }
 
 const {
@@ -15,15 +14,12 @@ const {
   description = "Portfolio showcasing web development projects, design work, and creative experiments.",
   image,
   type = "website",
-  noindex = false,
 } = Astro.props;
-
 
 const siteURL = Astro.site || new URL(Astro.url.href);
 const canonicalURL = new URL(Astro.url.pathname, siteURL);
 
-const pageTitle = title ? `${title} - ${SITE_TITLE}` : SITE_TITLE;
-
+const pageTitle = title ? `${title}` : SITE_TITLE;
 
 const socialImage = image
   ? new URL(image, siteURL)
@@ -34,7 +30,10 @@ const socialImage = image
 <meta name="title" content={pageTitle} />
 <meta name="description" content={description} />
 <link rel="canonical" href={canonicalURL} />
-{noindex && <meta name="robots" content="noindex, nofollow" />}
+<meta name="robots" content="index, follow" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="author" content="Jochem Punt" />
+<meta name="locale" content="en_GB" />
 
 <meta property="og:type" content={type} />
 <meta property="og:url" content={canonicalURL} />
@@ -49,11 +48,19 @@ const socialImage = image
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={socialImage} />
 
+<meta
+  name="theme-color"
+  content="#262726"
+  media="(prefers-color-scheme: dark)"
+/>
+<meta name="color-scheme" content="dark" />
+
 <Schema
   item={{
     "@context": "https://schema.org",
     "@type": "Person",
     name: "Jochem Punt",
+    site: siteURL.toString(),
     jobTitle: "Software Engineer",
     knowsAbout: [
       "UX",

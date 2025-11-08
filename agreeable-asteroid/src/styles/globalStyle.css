@@ -1,10 +1,10 @@
 :root {
   --primary-color: hsl(0, 0%, 82%);
   --text-color: #d1cfcf;
-  --text-color-light: #f1f1f1; 
+  --text-color-light: #f1f1f1;
   --background-color: #262726;
   --background-color-light: #474947;
-  --accent-color: #ff835a; 
+  --accent-color: #ff835a;
   --accent-color-rgb: 255, 131, 90;
 }
 
@@ -55,9 +55,14 @@ h2 {
 
 main {
   flex: 1;
-  max-width: 1300px;
+  max-width: 900px;
   margin: 0 auto;
-  padding: 2rem 2rem 0 2rem;
+  padding: 0 0.4rem;
+}
+
+main > p {
+  text-align: justify;
+  text-justify: distribute;
 }
 
 footer {
@@ -90,13 +95,18 @@ h1 {
 
 ::view-transition-old(title),
 ::view-transition-new(title) {
-  animation-duration: 250ms; 
-  animation-timing-function: ease-in; 
+  animation-duration: 250ms;
+  animation-timing-function: ease-in;
 }
 
 header {
   view-transition-name: header;
 }
+
+
+
+
+
 
 @media (max-width: 768px) {
   nav {
@@ -106,8 +116,9 @@ header {
   }
 
   main {
-    padding: 0;
+    padding: 0 0.4rem;
     margin-top: 0;
+
   }
 
   h1 {

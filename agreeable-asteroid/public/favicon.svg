@@ -1,20 +1,36 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <style>
-    .bg { fill: #ff6b35; }
-    .text {
-      fill: white;
-      font-family: sans-serif;
-      font-weight: 900;
-      font-size: 22px;
-    }
-    @media (prefers-color-scheme: dark) {
-      .bg { fill: #ff8555; }
-    }
-  </style>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
 
-  <!-- Orange background -->
-  <rect class="bg" width="32" height="32" rx="6"/>
-
-  <!-- Bold "J." text -->
-  <text class="text" x="7" y="24">J.</text>
+<svg
+   width="158.59528mm"
+   height="158.59528mm"
+   viewBox="0 0 158.59528 158.59528"
+   version="1.1"
+   id="svg5"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs2" />
+  <g
+     id="layer1"
+     transform="translate(-30.821619,-38.993568)">
+    <rect
+       style="fill:#ff835a;fill-opacity:1;stroke-width:0.264583"
+       id="rect111"
+       width="158.59528"
+       height="158.59528"
+       x="30.821619"
+       y="38.993568"
+       ry="15.918213" />
+    <text
+       xml:space="preserve"
+       style="font-size:123.472px;line-height:0;fill:#ff835a;fill-opacity:1;stroke-width:0.264583"
+       x="49.494537"
+       y="160.14821"
+       id="text4954"><tspan
+         id="tspan4952"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:123.472px;font-family:'Ubuntu Mono';-inkscape-font-specification:'Ubuntu Mono';fill:#ffffff;fill-opacity:1;stroke-width:0.264583"
+         x="49.494537"
+         y="160.14821">J.</tspan></text>
+  </g>
 </svg>
