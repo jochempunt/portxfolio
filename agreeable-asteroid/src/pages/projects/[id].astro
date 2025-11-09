@@ -36,23 +36,22 @@ import BasicLayout from "../../layouts/basicLayout.astro";
   #homePage:hover {
     color: var(--accent-color);
   }
- .content{
-  max-width: 900px;
- }
+  .content {
+    max-width: 900px;
+  }
 
-.content p{
-  text-align: justify;
-  text-justify: distribute;
-}
+  .content p {
+    text-align: justify;
+    text-justify: distribute;
+  }
 
+  .breadcrumbs {
+    margin-top: 1.5rem;
+  }
 
-.breadcrumbs{
-  margin-top: 1.5rem;
-}
-
-.breadcrumbs > a{
-  text-decoration: underline;
-}
+  .breadcrumbs > a {
+    text-decoration: underline;
+  }
 
   #back {
     display: block;
@@ -61,16 +60,13 @@ import BasicLayout from "../../layouts/basicLayout.astro";
     margin-bottom: 10px;
   }
 
-  h2{
+  h2 {
     margin-bottom: 0;
   }
 
-  @media (max-width:768px) {
-    .content{
-      margin:  0 1rem;
-    }
-    .breadcrumbs{
-      margin:  0 1rem;
+  @media (max-width: 768px) {
+    .content {
+      margin: 0 1rem;
     }
   }
 </style>
