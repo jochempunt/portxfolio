@@ -3,44 +3,47 @@ import BasicLayout from "../layouts/basicLayout.astro";
 import ProjectPreview from "../components/ProjectPreview.astro";
 import { getCollection } from "astro:content";
 const description =
-  "Explore projects inlcuding interactive web applications, game prototypes, and research projects by Jochem Punt - a software engineer focusing on UX, frontend, 3D and more";
+  "Interactive web apps, game prototypes & research projects by Jochem Punt - a software engineer specializing in UX, frontend & 3D development";
 const projects = await getCollection("projects");
 ---
 
 <BasicLayout
-  title="Projects by Jochem Punt - Web, Game & UX Development"
+  title="Jochem Punt - Web, Game & UX Development Projects"
   id="projects"
   description={description}
 >
   <section id="info">
-    <h1>Projects</h1>
-    <p class="tagline">
-      <p>
-        Discover projects by <strong>Jochem Punt</strong> spanning from modernn
-        web development, frontend development, experiments with AI and games. <a
-          id="more"
-          href="/about-me" title="About me Page">Learn more more about me</a
-        >
-      </p>
+    <h1>Projects by Jochem Punt</h1>
+    <p class="tagline">Software Development • UX • Frontend • 3D • Games</p>
+    <p>
+      Explore interactive web applications, game prototypes, and research
+      projects showcasing expertise in UX design, frontend development, and 3D
+      experiences.
+      <a id="more" href="/about-me/">Learn more about me</a>
     </p>
   </section>
-  <section class="projects-list">
-    {
-      projects
-        .sort((a, b) => a.data.prio - b.data.prio)
-        .map((proj) => (
-          <ProjectPreview
-            title={proj.data.title}
-            slug={proj.id}
-            description={proj.data.description}
-            img={proj.data.img}
-            tags={proj.data.tags}
-            github={proj.data.github}
-          />
-        ))
-    }
-  </section>
+
+
+<section class="projects-list">
+  {
+    projects
+      .sort((a, b) => a.data.prio - b.data.prio)
+      .map((proj) => (
+        <ProjectPreview
+          title={proj.data.title}
+          slug={proj.id}
+          description={proj.data.description}
+          img={proj.data.img}
+          tags={proj.data.tags}
+          github={proj.data.github}
+        />
+      ))
+  }
+</section>
+
 </BasicLayout>
+
+
 <style>
   .projects-list {
     max-width: 900px;
@@ -48,7 +51,7 @@ const projects = await getCollection("projects");
     padding-bottom: 3rem;
   }
   main {
-    max-width: 900;
+    max-width: 900px;
   }
 
   #info {

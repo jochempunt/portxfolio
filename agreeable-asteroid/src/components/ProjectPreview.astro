@@ -1,6 +1,5 @@
 ---
-import { Image } from 'astro:assets';
-import GithubIcon from '../assets/githubicon.svg';
+import { Image } from "astro:assets";
 
 interface Props {
   title: string;
@@ -11,23 +10,15 @@ interface Props {
   github?: string;
 }
 
-
-
 const { title, slug, description, img, tags, github } = Astro.props;
-const projectUrl = `projects/${slug}`;
+const projectUrl = `/projects/${slug}/`;
 ---
 
 <article class="project-item">
-  <a
-    href={projectUrl}
-    class="project-thumbnail"
-    aria-label={`View ${title}`}
-    tabindex="-1"
-    title={`view more about ${title}`}
-  >
-   <Image
+  <a href={projectUrl} class="project-thumbnail" tabindex="-1">
+    <Image
       src={img}
-      alt={`Screenshot of ${title}`}
+      alt={`Preview of ${title}`}
       class="thumbnail-img"
       width={800}
       height={600}
@@ -38,7 +29,7 @@ const projectUrl = `projects/${slug}`;
   </a>
 
   <div class="project-content">
-    <a href={projectUrl} class="project-title-link" tabindex="-1" title={`view more about ${title}`}>
+    <a href={projectUrl} class="project-title-link" tabindex="-1">
       <h2 class="project-title">{title}</h2>
     </a>
 
@@ -51,21 +42,7 @@ const projectUrl = `projects/${slug}`;
     </p>
 
     <div class="project-actions">
-      <a href={projectUrl} class="view-more" title={`view more about ${title}`}>View project →</a>
-
-      {
-        github && (
-          <a
-            href={github}
-            target="_blank"
-            rel="noopener noreferrer"
-            title="View source on GitHub"
-            class="github-icon-link"
-          >
-            <GithubIcon />
-          </a>
-        )
-      }
+      <a href={projectUrl} class="view-more">View project →</a>
     </div>
   </div>
 </article>
@@ -88,18 +65,17 @@ const projectUrl = `projects/${slug}`;
     border-radius: 4px;
     display: block;
   }
-  
- .project-thumbnail {
-  width: 200px;
-  aspect-ratio: 4/3;
-  display: block;
-  transition: opacity 0.2s;
-}
 
-.project-thumbnail:hover .thumbnail-img {
-  opacity: 0.8;
-}
+  .project-thumbnail {
+    width: 200px;
+    aspect-ratio: 4/3;
+    display: block;
+    transition: opacity 0.2s;
+  }
 
+  .project-thumbnail:hover .thumbnail-img {
+    opacity: 0.8;
+  }
 
   .project-content {
     display: flex;
@@ -147,7 +123,7 @@ const projectUrl = `projects/${slug}`;
     font-size: 0.8rem;
     padding: 0.25rem 0.65rem;
     background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 999px; 
+    border-radius: 999px;
     color: var(--text-color);
     font-weight: 500;
   }

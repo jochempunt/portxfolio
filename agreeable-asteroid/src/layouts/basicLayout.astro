@@ -1,7 +1,7 @@
 ---
 import Header from "../components/Header.astro";
 import Seo from "../components/Seo.astro";
-import Analytics from '@vercel/analytics/astro'
+import Analytics from "@vercel/analytics/astro";
 import GithubIcon from "../assets/githubicon.svg";
 
 interface Props {
@@ -17,7 +17,7 @@ import "../styles/globalStyle.css";
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <Seo title={title} description={description} />
   </head>
@@ -26,7 +26,7 @@ import "../styles/globalStyle.css";
     <Header />
     <main>
       <slot />
-      <Analytics/>
+      <Analytics />
     </main>
 
     <footer>
@@ -63,7 +63,6 @@ import "../styles/globalStyle.css";
     transition: opacity 0.2s ease-in-out;
   }
   .footer-source-link:hover {
-  
     text-decoration: none;
   }
   .footer-source-link svg {
@@ -75,14 +74,13 @@ import "../styles/globalStyle.css";
     text-decoration: underline;
   }
 
-
   @media (max-width: 768px) {
+    .footer-source-link span {
+      font-size: 0.8rem;
+    }
 
-  .footer-source-link span {
-    font-size: 0.8rem;
-  }
-
-  .footer-content{
-    padding:5px;
+    .footer-content {
+      padding: 5px;
+    }
   }
 </style>

@@ -35,7 +35,6 @@ const iconSvg = iconName ? icons[iconName] : null;
   href={linkHref}
   target={target}
   rel={rel}
-  title={label}
   class={`github-link ${special}`}
   data-email={email}
 >
@@ -44,7 +43,6 @@ const iconSvg = iconName ? icons[iconName] : null;
 </a>
 
 <script>
-  // Simple email obfuscation
   document.querySelectorAll("a[data-email]").forEach((link) => {
     const setMailto = () => {
       const email = (link as HTMLElement).dataset.email;
@@ -52,8 +50,6 @@ const iconSvg = iconName ? icons[iconName] : null;
         link.setAttribute("href", `mailto:${email}`);
       }
     };
-
-    // Set the href on first interaction (hover or focus) to avoid scrapers
     link.addEventListener("pointerenter", setMailto, { once: true });
     link.addEventListener("focus", setMailto, { once: true });
   });

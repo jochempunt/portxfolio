@@ -4,22 +4,13 @@ const isProjects = pathname === "/" || pathname.startsWith("/projects");
 const isAboutme = pathname.startsWith("/about-me");
 ---
 
-<header >
+<header>
   <a href="/" class="site-name" aria-label="Jochem Punt - Home">
     Jochem Punt
   </a>
   <nav>
-    <a
-      href="/"
-      aria-current={isProjects ? "page" : undefined}
-      
-    >
-      Projects
-    </a>
-    <a
-      href="/about-me"
-      aria-current={isAboutme ? "page" : undefined}
-    >
+    <a href="/" aria-current={isProjects ? "page" : undefined}> Projects </a>
+    <a href="/about-me/" aria-current={isAboutme ? "page" : undefined}>
       About me
     </a>
   </nav>
@@ -36,16 +27,14 @@ const isAboutme = pathname.startsWith("/about-me");
     padding: 0.8rem;
   }
 
-  
-
   nav > a {
     border-radius: 20px;
     padding: 0.3rem 0.6rem;
-     background-color: transparent;
+    background-color: transparent;
   }
 
   nav a[aria-current="page"] {
-    color: var(--background-color); 
+    color: var(--background-color);
     background-color: var(--accent-color);
   }
 
@@ -66,7 +55,7 @@ const isAboutme = pathname.startsWith("/about-me");
     gap: 20px;
     background-color: rgba(47, 47, 47, 0.9);
     padding: 0.8rem;
- 
+
     top: 0;
     z-index: 1000;
     align-items: center;
@@ -90,6 +79,5 @@ const isAboutme = pathname.startsWith("/about-me");
     a {
       font-size: small;
     }
-   
   }
 </style>
