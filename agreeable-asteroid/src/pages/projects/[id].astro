@@ -49,6 +49,14 @@ import BasicLayout from "../../layouts/basicLayout.astro";
     margin-top: 1.5rem;
   }
 
+  .content :global(code) {
+  background: rgba(var(--accent-color-rgb), 0.15);
+  color: var(--accent-color);
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-size: 0.9em;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+}
   .breadcrumbs > a {
     text-decoration: underline;
   }

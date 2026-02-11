@@ -1,19 +1,13 @@
-
-Lighthouse Scores:
-
-![Lighthouse](./assets/lighthouse-scores.svg)
-
-
 # Portfolio
 
-My personal portfolio website showcasing my projects and skills.
+My personal portfolio showcasing projects in web development, UX, and interactive experiences.
 
-Visit live site:
-[jochempunt.com](https://jochempunt.com/)
+**Live site:** [jochempunt.com](https://jochempunt.com/)
 
-## Tech Stack
-Built with Astro, HTML/CSS, and MDX.
+## Built with
+- **Astro** - Static site generation
+- **MDX** - Project pages generated from markdown with frontmatter
+- **CSS** - Custom responsive styling, no frameworks
 
-- Astro - Static site generation
-- MDX - Write projects as markdown files with frontmatter metadata. The site automatically generates preview cards for the portfolio grid and individual project detail pages from these files.
-- CSS - Responsive and accessible design
+## Performance (Lighthouse)
+![Lighthouse](./assets/lighthouse-scores.svg)

@@ -10,195 +10,102 @@ const description =
   <section class="intro">
     <h1>About me</h1>
     <p class="lead">
-      I'm Jochem Punt, a frontend engineer who builds fast, accessible interfaces. I care about performance, clean code, and making complex interactions feel effortless.
+      I'm Jochem Punt, a frontend engineer who builds fast, accessible interfaces. 
+      I care about performance, clean code, and making complex interactions feel effortless.
     </p>
-  </section>
-  
-  <section class="about-highlights">
-    <p class="kicker">What I’m good at</p>
-    <h2 class="headline">Learning fast, building thoughtfully.</h2>
     
     <p class="body">
-      I enjoy digging below the surface and connecting systems. I’ve worked with
-      <strong>C#</strong> (.NET / Unity), <strong>TypeScript</strong> (React, Astro),
-      and <strong>Python</strong>, across web interfaces, 3D, and
-      research-driven prototypes.
+      I work across <strong>TypeScript</strong> (React, Astro), <strong>C#</strong> (.NET, Unity), 
+      and <strong>Python</strong>; building web apps, 3D experiences, and research prototypes. 
+      I like digging into systems, solving hard problems, and shipping things that work well.
     </p>
-    
-    <div class="grid">
-      <div>
-        <h3>Strengths</h3>
-        <ul>
-          <li>Rapid learning & problem framing</li>
-          <li>Accessible, performance-minded UX</li>
-          <li>Clean, readable code</li>
-        </ul>
-      </div>
-      <div>
-        <h3>Used lately</h3>
-        <ul>
-          <li>TypeScript · React · Astro</li>
-          <li>C# · .NET · Unity</li>
-          <li>Python (tooling / scripts)</li>
-        </ul>
-      </div>
-    </div>
   </section>
   
   <section class="status">
     <div class="status-card">
-      <span class="status-indicator"></span>
       <p>
-        Currently working as a <strong>Software Engineer</strong> at
-        <strong>Pie Medical Imaging</strong> in Maastricht.
+        Currently <strong>Software Engineer</strong> at <strong>Pie Medical Imaging</strong> in Maastricht
       </p>
     </div>
   </section>
   
   <section class="connect">
-    <h2>Connect with me:</h2>
+    <h2>Get in touch</h2>
     <div class="button-group">
       <ButtonLink
-      href="/linkedin"
-      label="My LinkedIn"
-      icon="linkedin"
-      special="Blue"
+        href="/linkedin"
+        label="LinkedIn"
+        icon="linkedin"
       />
       <ButtonLink
-      href="https://github.com/jochempunt"
-      label="My GitHub"
-      icon="github"
-      special="Orange"
+        href="https://github.com/jochempunt"
+        label="GitHub"
+        icon="github"
       />
       <ButtonLink
-      email="jochem.punt@gmail.com"
-      label="Email Me"
-      special="Green"
+        email="jochem.punt@gmail.com"
+        label="Email"
       />
     </div>
   </section>
 </BasicLayout>
 
 <style>
-  .kicker {
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    opacity: 0.7;
-    margin: 0 0 0.25rem;
-  }
-  .headline {
-    font-size: 1.4rem;
-    margin: 0.1rem 0 0.6rem;
-    color: var(--text-color-light);
-  }
-  .body {
-    line-height: 1.8;
-    margin: 0 0 1rem;
-  }
-  .grid {
-    display: grid;
-    gap: 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  }
-  .grid h3 {
-    margin: 0.25rem 0 0.4rem;
-    font-size: 1rem;
-    color: var(--text-color-light);
-  }
-  .grid ul {
-    margin: 0;
-    padding-left: 1.1rem;
-  }
-  .grid li {
-    margin: 0.25rem 0;
-  }
-  
   section {
-    margin-bottom: 1rem;
+    margin-bottom: 2.5rem;
   }
   
   .intro {
-    margin-bottom: 1rem;
+    max-width: 700px;
   }
   
   .lead {
+    font-size: 1.2rem;
     line-height: 1.6;
+    margin-bottom: 1.5rem;
+    color: var(--text-color-light);
   }
   
-  .skills p {
-    max-width: 800px;
-    line-height: 1.8;
+  .body {
+    line-height: 1.7;
+    margin: 0;
   }
   
   h2 {
+    font-size: 1.3rem;
     font-weight: 500;
     color: var(--text-color-light);
     margin-bottom: 1rem;
   }
   
-  em {
-    font-weight: 800;
-    color: var(--accent-color);
-    font-style: normal;
-    font-size: 1.8rem;
-  }
-  
-  .button-group {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-  
-  strong,
-  b {
+  strong {
     color: var(--text-color-light);
     font-weight: 600;
   }
   
-  .status {
-    margin-bottom: 2.5rem;
-  }
-  
   .status-card {
     position: relative;
-    max-width: 800px;
-    padding: 1rem 1rem 1rem 2.5rem;
-    background: rgba(var(--accent-color-rgb), 0.1);
-    border: 2px solid rgba(var(--accent-color-rgb), 0.4);
-    border-radius: 8px;
+    max-width: 700px;
+    padding: 1.2rem;
+    background: rgba(var(--accent-color-rgb), 0.08);
+    border-left: 3px solid var(--accent-color);
+ 
   }
   
-  .status-indicator {
-    position: absolute;
-    left: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 10px;
-    height: 10px;
-    background: var(--accent-color);
-    border-radius: 50%;
-    animation: pulse 2s ease-in-out infinite;
-  }
+
   
   .status-card p {
-    font-size: 1rem;
-    color: var(--text-color-light);
     margin: 0;
+    color: var(--text-color);
   }
   
-  main {
-    padding: 0 0;
+  .status-card strong {
+    color: var(--accent-color);
   }
   
   @keyframes pulse {
-    0%,
-    100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0.5;
-    }
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
   }
   
   @media (prefers-reduced-motion: reduce) {
@@ -207,36 +114,26 @@ const description =
     }
   }
   
-  .status-card strong {
-    color: var(--accent-color);
-  }
-  
-  @media (max-width: 768px) {
-    section {
-      margin: 0 1rem;
-    }
-  }
-  
   .button-group {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
-    margin-bottom: 1rem;
   }
   
-  /* mobile overrides */
+  @media (max-width: 768px) {
+    section {
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+  }
+  
   @media (max-width: 500px) {
     .connect {
-      margin-bottom: 2.5rem; /* space above footer */
+      margin-bottom: 3rem;
     }
     
     .button-group {
       flex-direction: column;
-      align-items: stretch;
-    }
-    
-    .button-group > * {
-      width: 100%;
     }
   }
 </style>
