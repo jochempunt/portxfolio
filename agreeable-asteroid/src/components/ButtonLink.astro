@@ -32,14 +32,14 @@ const iconSvg = iconName ? icons[iconName] : null;
 ---
 
 <a
-  href={linkHref}
-  target={target}
-  rel={rel}
-  class={`github-link ${special}`}
-  data-email={email}
+href={linkHref}
+target={target}
+rel={rel}
+class={`github-link ${special}`}
+data-email={email}
 >
-  <span>{label}</span>
-  {iconSvg && <Fragment set:html={iconSvg} />}
+<span>{label}</span>
+{iconSvg && <Fragment set:html={iconSvg} />}
 </a>
 
 <script>
@@ -61,7 +61,10 @@ const iconSvg = iconName ? icons[iconName] : null;
     align-items: center;
     gap: 0.5rem;
     padding: 0.75rem 1.25rem;
-    background: #2b2b2b;
+    background:radial-gradient(#ff835ad5, #ff835a);
+    background-repeat: no-repeat;
+    background-size: 0% 0%;
+    background-position: center;
     border: 1px solid #3a3a3a;
     border-radius: 8px;
     color: #ffffff;
@@ -69,16 +72,16 @@ const iconSvg = iconName ? icons[iconName] : null;
     font-size: 0.95rem;
     font-weight: 500;
     transition:
-      background 0.2s ease,
-      border-color 0.2s ease;
-
+    border-color 0.2s ease;
+    transition: background-size 0.2s ease-out, border-color 0.2s ease;
+    
   }
-
+  
   .github-link:hover {
-    background: #333;
     border-color: #4a4a4a;
+    background-size: 100% 100%;
   }
-
+  
   .github-link > :global(svg) {
     width: 16px;
     height: 16px;
@@ -86,31 +89,31 @@ const iconSvg = iconName ? icons[iconName] : null;
     opacity: 0.7;
     transition: opacity 0.2s ease;
   }
-
+  
   .Orange{
     background-color: #ff835ad5;
   }
-
-   .Orange:hover{
+  
+  .Orange:hover{
     background-color: #f09475ce;
   }
-
+  
   .Blue{
     background-color: #5aaaffd2;
   }
-
+  
   .Blue:hover{
     background-color: #6fb1f7cf;
   }
-
+  
   .Green {
     background-color: #f5563dd5;
   }
-
+  
   .Green:hover {
     background-color: #f5563da9;
   }
-
+  
   .github-link:hover > :global(svg) {
     opacity: 1;
   }

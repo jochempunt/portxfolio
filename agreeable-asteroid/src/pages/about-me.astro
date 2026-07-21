@@ -3,48 +3,42 @@ import BasicLayout from "../layouts/basicLayout.astro";
 import ButtonLink from "../components/ButtonLink.astro";
 
 const description =
-"About Jochem Punt: frontend-focused software engineer building fast, accessible, interactive interfaces.";
+"About Jochem Punt: frontend-focused software engineer building accessible, interactive interfaces and experiences.";
 ---
 
 <BasicLayout title="About Jochem Punt" id="about-me" description={description}>
   <section class="intro">
     <h1>About me</h1>
     <p class="lead">
-      I'm Jochem Punt, a frontend engineer who builds fast, accessible interfaces. 
-      I care about performance, clean code, and making complex interactions feel effortless.
+      I'm Jochem Punt, a frontend engineer based in the intersection of code and digital media.
+      After a bachelor's in <i>Computer Science in Media</i> and a year working as a software engineer,
+      I'm now heading into a master's in <i>Game and Media Technology</i>.
     </p>
     
     <p class="body">
-      I work across <strong>TypeScript</strong> (React, Astro), <strong>C#</strong> (.NET, Unity), 
-      and <strong>Python</strong>; building web apps, 3D experiences, and research prototypes. 
-      I like digging into systems, solving hard problems, and shipping things that work well.
+      I like working across <strong>TypeScript</strong> (React, Astro), <strong>C#</strong> (.NET, Unity),
+      and <strong>Python</strong>, building web apps and 3D experiences. I'm especially drawn to UX/IX
+      and interactive design; 
+      figuring out how something should feel to use, not just how it should work.
     </p>
-  </section>
-  
-  <section class="status">
-    <div class="status-card">
-      <p>
-        Currently <strong>Software Engineer</strong> at <strong>Pie Medical Imaging</strong> in Maastricht
-      </p>
-    </div>
   </section>
   
   <section class="connect">
     <h2>Get in touch</h2>
     <div class="button-group">
       <ButtonLink
-        href="/linkedin"
-        label="LinkedIn"
-        icon="linkedin"
+      href="/linkedin"
+      label="LinkedIn"
+      icon="linkedin"
       />
       <ButtonLink
-        href="https://github.com/jochempunt"
-        label="GitHub"
-        icon="github"
+      href="https://github.com/jochempunt"
+      label="GitHub"
+      icon="github"
       />
       <ButtonLink
-        email="jochem.punt@gmail.com"
-        label="Email"
+      email="jochem.punt@gmail.com"
+      label="Email"
       />
     </div>
   </section>
@@ -55,20 +49,17 @@ const description =
     margin-bottom: 2.5rem;
   }
   
-  .intro {
-    max-width: 700px;
-  }
-  
   .lead {
-    font-size: 1.2rem;
     line-height: 1.6;
     margin-bottom: 1.5rem;
     color: var(--text-color-light);
+    text-wrap-style:balance;
   }
   
   .body {
     line-height: 1.7;
     margin: 0;
+    text-wrap-style:balance;
   }
   
   h2 {
@@ -83,36 +74,6 @@ const description =
     font-weight: 600;
   }
   
-  .status-card {
-    position: relative;
-    max-width: 700px;
-    padding: 1.2rem;
-    background: rgba(var(--accent-color-rgb), 0.08);
-    border-left: 3px solid var(--accent-color);
- 
-  }
-  
-
-  
-  .status-card p {
-    margin: 0;
-    color: var(--text-color);
-  }
-  
-  .status-card strong {
-    color: var(--accent-color);
-  }
-  
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
-  }
-  
-  @media (prefers-reduced-motion: reduce) {
-    .status-indicator {
-      animation: none;
-    }
-  }
   
   .button-group {
     display: flex;
