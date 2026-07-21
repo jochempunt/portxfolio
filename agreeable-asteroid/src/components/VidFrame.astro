@@ -17,13 +17,9 @@ const isVertical = aspectRatio === "9/16";
 ---
 
 {isVertical ? (
-  <!-- Modern Phone Frame -->
   <div class="phone-frame" style={`max-width: ${width};`}>
     <div class="phone-body">
-      <!-- Notch/Dynamic Island -->
       <div class="notch"></div>
-      
-      <!-- Screen -->
       <div class="phone-screen">
         <iframe
           src={"https://www.youtube-nocookie.com/embed/"+id+"?rel=0&modestbranding=1&controls=0"}
@@ -37,7 +33,6 @@ const isVertical = aspectRatio === "9/16";
     </div>
   </div>
 ) : (
-  <!-- Window Frame for horizontal videos -->
   <div class="video-frame-wrapper" style={`max-width: ${width};`}>
     <div class="window-header">
       <div class="window-controls">
