@@ -1,0 +1,204 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+    src: ImageMetadata;
+    alt: string;
+    class?: string;
+    size?: number;
+    lightboxSize?: number;
+}
+
+const {
+    src,
+    alt,
+    class: className = '',
+    size = 600,
+    lightboxSize = Math.min(src.width, 1600),
+} = Astro.props;
+
+const dialogId = `lightbox-${crypto.randomUUID()}`;
+const labelId = `${dialogId}-label`;
+---
+
+<div class={`img-container ${className}`}>
+    <button
+    type="button"
+    class="img-trigger"
+    data-lightbox-target={dialogId}
+    aria-haspopup="dialog"
+    aria-label={`View larger image: ${alt}`}
+    >
+    <Image src={src} alt={alt} title={alt} width={size} loading="eager" />
+</button>
+</div>
+
+<dialog id={dialogId} class="lightbox" aria-labelledby={labelId}>
+    <div class="lightbox-content">
+        <button type="button" class="lightbox-close" aria-label="Close image">&times;</button>
+        <Image src={src} alt={alt} width={lightboxSize} format="png" quality={100} loading="lazy" />
+        <p id={labelId} class="label">{alt}</p>
+    </div>
+</dialog>
+
+<script>
+    document
+    .querySelectorAll<HTMLButtonElement>('[data-lightbox-target]')
+        .forEach((trigger) => {
+            const targetId = trigger.dataset.lightboxTarget;
+            if (!targetId) return;
+            
+            const dialog = document.getElementById(targetId) as HTMLDialogElement | null;
+            if (!dialog) return;
+            
+            trigger.addEventListener('click', () => dialog.showModal());
+            
+            dialog
+            .querySelector('.lightbox-close')
+            ?.addEventListener('click', () => dialog.close());
+            
+            dialog.addEventListener('click', (e) => {
+                if (e.target === dialog) dialog.close();
+            });
+        });
+    </script>
+    
+    <style>
+        
+        .img-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+        
+        img, :global(img) {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        
+        .img-trigger {
+            all: unset;
+            display: block;
+            cursor: zoom-in;
+        }
+        
+        
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            margin: 0;
+            padding: 1rem;
+            width: 100vw;   
+            width: 100dvw; 
+            height: 100vh;  
+            height: 100dvh; 
+            border: none;
+            background: transparent;
+            align-items: center;
+            justify-content: center;
+            
+            opacity: 0;
+            transition:
+            opacity 0.2s ease,
+            overlay 0.2s ease allow-discrete,
+            display 0.2s ease allow-discrete;
+        }
+        
+        .lightbox[open] {
+            display: flex;
+            opacity: 1;
+        }
+        
+        @starting-style {
+            .lightbox[open] {
+                opacity: 0;
+            }
+        }
+        
+        .lightbox::backdrop {
+            background: rgba(0, 0, 0, 0);
+            transition:
+            background 0.2s ease,
+            overlay 0.2s ease allow-discrete,
+            display 0.2s ease allow-discrete;
+        }
+        
+        .lightbox[open]::backdrop {
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(3px);
+        }
+        
+        @starting-style {
+            .lightbox[open]::backdrop {
+                background: rgba(0, 0, 0, 0);
+            }
+        }
+        
+        .lightbox-content {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            max-width: 90vw;
+            max-height: 90vh;
+            transform: scale(0.96);
+            transition: transform 0.2s ease;
+        }
+        
+        .lightbox[open] .lightbox-content {
+            transform: scale(1);
+        }
+        
+        @starting-style {
+            .lightbox[open] .lightbox-content {
+                transform: scale(0.96);
+            }
+        }
+        
+        .lightbox-content :global(img) {
+            display: block;
+            max-width: 90vw;
+            max-height: 80vh; 
+            width: auto;
+            height: auto;
+            border-radius: 8px;
+        }
+        
+        .label {
+            margin: 0;
+            max-width: 90vw;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.9rem;
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            width: 2rem;
+            height: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.55);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 50%;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+            color: #fff;
+            font-size: 1.25rem;
+            line-height: 1;
+            cursor: pointer;
+            transition: background 0.2s ease, border-color 0.2s ease;
+        }
+        
+        .lightbox-close:hover {
+            background: rgba(0, 0, 0, 0.75);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+    </style>

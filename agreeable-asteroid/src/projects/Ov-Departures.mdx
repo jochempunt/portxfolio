@@ -11,9 +11,15 @@ import ImageGrid from "../layouts/ImageGrid.astro"
 import Linkbutton from "../components/ButtonLink.astro"
 import PhoneImageFrame from "../components/PhoneImageFrame.astro"
 import PhoneImg from "../assets/ov-webapp/phone_screen.png"
-
+import LightBox from "../components/LightBox.astro"
 
   
+import theme1 from "../assets/ov-webapp/theme_1.png"
+import theme2 from "../assets/ov-webapp/theme_2.png"
+import theme3 from "../assets/ov-webapp/theme_3.png"
+import theme4 from "../assets/ov-webapp/theme4.png"
+
+
 # Departures
 
 <Linkbutton  label="View Website" href="https://ov-app-ten.vercel.app/" icon="external" />  
@@ -32,11 +38,12 @@ A mobile-first web app for checking Dutch public transport departures. I made th
 - Shareable links—stops encoded in URL (e.g `?stop=MttAca`) for easy bookmarking and sharing
 
 ## Examples (with themes)
+
 <ImageGrid>
-![Screenshot with Aurora theme and opened search](../assets/ov-webapp/theme_3.png)
-![Screenshot of "Not NS" theme](../assets/ov-webapp/theme_2.png)
-![Screenshot of "Not Arriva" theme](../assets/ov-webapp/theme_1.png)
-![Screenshot of Dark theme](../assets/ov-webapp/theme4.png)
+  <LightBox src={theme3} alt="Screenshot with Aurora theme and opened search" />
+  <LightBox src={theme2} alt='Screenshot of "Not NS" theme' />
+  <LightBox src={theme1} alt='Screenshot of "Not Arriva" theme' />
+  <LightBox src={theme4} alt="Screenshot of Dark theme" />
 </ImageGrid>
 
 ## Tech Stack

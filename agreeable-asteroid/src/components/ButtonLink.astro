@@ -26,20 +26,19 @@ const icons = {
   mail: MailIcon,
 };
 
-
 const iconName = isEmail ? "mail" : icon;
 const iconSvg = iconName ? icons[iconName] : null;
 ---
 
 <a
-href={linkHref}
-target={target}
-rel={rel}
-class={`github-link ${special}`}
-data-email={email}
+  href={linkHref}
+  target={target}
+  rel={rel}
+  class={`github-link ${special}`}
+  data-email={email}
 >
-<span>{label}</span>
-{iconSvg && <Fragment set:html={iconSvg} />}
+  <span>{label}</span>
+  {iconSvg && <Fragment set:html={iconSvg} />}
 </a>
 
 <script>
@@ -57,31 +56,57 @@ data-email={email}
 
 <style>
   .github-link {
+    /* Default (Orange) colors, overridden per-variant below.
+       Idle = muted grey, hover = the circle reveals the real color. */
+    --base-color: #3a3a3a;
+    --hover-color: #ff835a;
+
+    position: relative;
+    isolation: isolate; /* keeps the ::before's negative z-index contained to this button */
+    overflow: hidden;   /* clips the circle back to the rounded corners once it grows past the box */
+
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
     padding: 0.75rem 1.25rem;
-    background:radial-gradient(#ff835ad5, #ff835a);
-    background-repeat: no-repeat;
-    background-size: 0% 0%;
-    background-position: center;
-    border: 1px solid #3a3a3a;
+    background: var(--base-color);
+    border: 1px solid #4a4a4a;
     border-radius: 8px;
     color: #ffffff;
     text-decoration: none;
     font-size: 0.95rem;
     font-weight: 500;
-    transition:
-    border-color 0.2s ease;
-    transition: background-size 0.2s ease-out, border-color 0.2s ease;
-    
+    -webkit-tap-highlight-color: transparent; /* avoid mobile's default grey tap flash clashing with the animation */
+    transition: border-color 0.2s ease, background 0.2s ease;
   }
-  
-  .github-link:hover {
+
+  /* The actual circular reveal: a solid fill clipped to a circle,
+     centered on the button, growing from a point to fully cover it. */
+  .github-link::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--hover-color);
+    clip-path: circle(0% at 50% 50%);
+    transition: clip-path 0.3s ease;
+  }
+
+  /* Hover (mouse) and active/focus (touch + keyboard) all trigger
+     the same growth — hover doesn't fire reliably on touch devices,
+     so :active covers "finger is down right now" on mobile. */
+  .github-link:hover::before,
+  .github-link:active::before,
+  .github-link:focus-visible::before {
+    /* 75% of the box's diagonal comfortably covers corner-to-corner */
+    clip-path: circle(75% at 50% 50%);
+  }
+
+  .github-link:hover,
+  .github-link:focus-visible {
     border-color: #4a4a4a;
-    background-size: 100% 100%;
   }
-  
+
   .github-link > :global(svg) {
     width: 16px;
     height: 16px;
@@ -89,32 +114,25 @@ data-email={email}
     opacity: 0.7;
     transition: opacity 0.2s ease;
   }
-  
-  .Orange{
-    background-color: #ff835ad5;
-  }
-  
-  .Orange:hover{
-    background-color: #f09475ce;
-  }
-  
-  .Blue{
-    background-color: #5aaaffd2;
-  }
-  
-  .Blue:hover{
-    background-color: #6fb1f7cf;
-  }
-  
-  .Green {
-    background-color: #f5563dd5;
-  }
-  
-  .Green:hover {
-    background-color: #f5563da9;
-  }
-  
-  .github-link:hover > :global(svg) {
+
+  .github-link:hover > :global(svg),
+  .github-link:active > :global(svg),
+  .github-link:focus-visible > :global(svg) {
     opacity: 1;
+  }
+
+  .Orange {
+    --base-color: #3a3a3a;
+    --hover-color: #ff835a;
+  }
+
+  .Blue {
+    --base-color: #3a3a3a;
+    --hover-color: #5aaaff;
+  }
+
+  .Green {
+    --base-color: #3a3a3a;
+    --hover-color: #f5563d;
   }
 </style>

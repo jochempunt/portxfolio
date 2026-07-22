@@ -12,6 +12,11 @@ import Link from "../components/ButtonLink.astro"
 import CenteredImage from "../components/CenteredImage.astro"
 import screenshot_blender from "../assets/planet-generator/screenshot_blender2.png"
 
+import LightBox from "../components/LightBox.astro"
+import planet1 from "../assets/planet-generator/Planet_1.png"
+import planet2 from "../assets/planet-generator/Planet_2.png"
+import planet3 from "../assets/planet-generator/Planet_3.png"
+import planet4 from "../assets/planet-generator/Planet_4.png"
 
 
 
@@ -26,18 +31,21 @@ A Blender addon (Python, bpy) that procedurally generates customizable planets d
 - Full material node-tree generation (no external textures required)
 
 ## Screenshot of Addon in use
-<CenteredImage src={screenshot_blender} alt={"Screenshot of Gas planet being made with blender addon"} />
 
+ <LightBox src={screenshot_blender} alt="Screenshot of Gas planet being made with blender addon" />
+<br/>
 
 ## Example planets generated with the addon
 
-<br/>
+
+
 <ImageGrid>
-![Gas Planet with ring](../assets/planet-generator/Planet_1.png)
-![Gas Planet without ring](../assets/planet-generator/Planet_2.png)
-![Earth like planet](../assets/planet-generator/Planet_3.png)
-![Moon](../assets/planet-generator/Planet_4.png)
+  <LightBox src={planet1} alt="Gas Planet with ring" />
+  <LightBox src={planet2} alt="Gas Planet without ring" />
+  <LightBox src={planet3} alt="Earth like planet" />
+  <LightBox src={planet4} alt="Moon " />
 </ImageGrid>
+
 
 
 ## Used Technologies
