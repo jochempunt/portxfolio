@@ -67,14 +67,15 @@ const iconSvg = iconName ? icons[iconName] : null;
 
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.25rem;
+    justify-content: var(--button-justify, flex-start);
+    gap: var(--button-gap, 0.5rem);
+    padding: var(--button-padding, 0.75rem 1.25rem);
     background: var(--base-color);
     border: 1px solid #4a4a4a;
     border-radius: 8px;
     color: #ffffff;
     text-decoration: none;
-    font-size: 0.95rem;
+    font-size: var(--button-font-size, 0.95rem);
     font-weight: 500;
     -webkit-tap-highlight-color: transparent; /* avoid mobile's default grey tap flash clashing with the animation */
     transition: border-color 0.2s ease, background 0.2s ease;

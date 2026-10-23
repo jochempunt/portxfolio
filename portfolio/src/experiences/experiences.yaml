@@ -1,0 +1,44 @@
+- id: pie-medical-imaging
+  title: Software Engineer
+  organization: PIE Medical Imaging
+  description: Worked on medical imaging software using C# and React.
+  startDate: "2025-08"
+  endDate: "2026-08"
+
+- id: waschbaer
+  title: Freelance Web Designer & Shopware Maintenance
+  organization: Waschbär
+  description: Worked on web design and Shopware maintenance using HTML and CSS.
+  startDate: "2024-10"
+  endDate: "2025-02"
+
+- id: sticky-stones
+  title: Game Development Intern
+  organization: StickyStoneStudio GmbH
+  description: Contributed to M.O.O.D.S., a top-down roguelite bullet-hell game, using Unity and C#.
+  img: /assets/moods_screenshot.png
+  startDate: "2024-05"
+  endDate: "2024-07"
+  links:
+    - label: View M.O.O.D.S. on Steam
+      href: https://store.steampowered.com/app/1956770/MOODS/
+
+- id: bachelor-thesis
+  title: Bachelor's Thesis — AR Product Configurator
+  organization: CAS Software AG
+  description: Built a Unity AR product configurator with an AI voice assistant, exploring how speech and augmented reality can work together to configure 3D products.
+  startDate: "2023-09"
+  endDate: "2023-12"
+  links:
+    - label: Explore the AR configurator
+      href: /projects/ar-configurator/
+
+- id: research-assistant
+  title: Student Research Assistant
+  organization: Hochschule Furtwangen
+  description: Developed MATLAB control software and an interface for a motorized three-axis camera gimbal, including smooth motion paths using quaternions and SLERP.
+  startDate: "2022-04"
+  endDate: "2023-07"
+  links:
+    - label: View the gimbal project
+      href: /projects/gimbal-control/

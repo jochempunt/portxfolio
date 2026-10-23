@@ -1,0 +1,165 @@
+---
+import BasicLayout from "../layouts/basicLayout.astro";
+import ButtonLink from "../components/ButtonLink.astro";
+import ExperienceBox from "../components/ExperienceBox.astro";
+import { getCollection } from "astro:content";
+const experiences = await getCollection("experiences");
+
+const description =
+"About Jochem Punt: frontend-focused software engineer building accessible, interactive interfaces and experiences.";
+---
+
+<BasicLayout title="About Jochem Punt" id="about-me" description={description}>
+  <section class="intro">
+    <h1>About me</h1>
+    <p class="lead">
+      I'm Jochem Punt, a frontend engineer based in the intersection of code and digital media.
+      After a bachelor's in <i>Computer Science in Media</i> and a year working as a software engineer,
+      I'm now heading into a master's in <i>Game and Media Technology</i>.
+    </p>
+    
+    <p class="body">
+      I like working across <strong>TypeScript</strong> (React, Astro), <strong>C#</strong> (.NET, Unity),
+      and <strong>Python</strong>, building web apps and 3D experiences. I'm especially drawn to UX/IX
+      and interactive design; 
+      figuring out how something should feel to use, not just how it should work.
+    </p>
+    
+    <section class="connect">
+      <div class="button-group">
+        <ButtonLink
+        href="/linkedin"
+        label="LinkedIn"
+        icon="linkedin"
+        />
+        <ButtonLink
+        href="https://github.com/jochempunt"
+        label="GitHub"
+        icon="github"
+        />
+        <ButtonLink
+        email="jochem.punt@gmail.com"
+        label="Email"
+        />
+      </div>
+    </section>
+    
+    <section class="experiences">
+      
+      <h2>Experience</h2>
+      {
+        experiences
+        .sort((a, b) => b.data.startDate.localeCompare(a.data.startDate))
+        .map((exp) => (
+        <ExperienceBox
+        title={exp.data.title}
+        description={exp.data.description}
+        organization={exp.data.organization}
+        img={exp.data.img}
+        startDate={exp.data.startDate}
+        endDate={exp.data.endDate}
+        links={exp.data.links}
+        />
+        ))
+      }
+    </section>
+    
+    
+    
+  </section>
+  
+  
+</BasicLayout>
+
+<style>
+  section {
+    margin-bottom: 2.5rem;
+  }
+  
+  .experiences{
+    margin-top:2.5rem;
+  }
+  
+  .connect {
+    margin-top: 1rem;
+  }
+
+  .lead {
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    color: var(--text-color-light);
+    text-wrap-style:balance;
+  }
+  
+  .body {
+    line-height: 1.7;
+    margin: 0;
+    text-wrap-style:balance;
+  }
+  
+  h2 {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--text-color-light);
+    margin-bottom: 1rem;
+  }
+  
+  strong {
+    color: var(--text-color-light);
+    font-weight: 600;
+  }
+  
+  
+  .button-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  @media (max-width: 768px) {
+    .intro {
+      margin: 1.5rem 1rem 2rem;
+    }
+
+    h1 {
+      margin: 0 0 1.25rem;
+      line-height: 1.2;
+    }
+
+    .lead {
+      margin: 0 0 1rem;
+    }
+
+    .body {
+      line-height: 1.6;
+    }
+
+    .connect {
+      margin: 1.25rem 0 0;
+    }
+
+    .experiences {
+      margin: 2rem 0 0;
+    }
+
+    h2 {
+      margin-bottom: 0.5rem;
+    }
+
+    .button-group {
+      gap: 0.65rem;
+    }
+  }
+  
+  @media (max-width: 500px) {
+    .button-group {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 5.5rem), 1fr));
+      gap: 0.5rem;
+      --button-padding: 0.65rem 0.35rem;
+      --button-font-size: 0.875rem;
+      --button-gap: 0.35rem;
+      --button-justify: center;
+    }
+  }
+</style>
